@@ -1,0 +1,25 @@
+{
+  "name": "table_flipper.js",
+  "version": "1.0.0",
+  "description": "A useless Node.js library for table flipping on exceptions",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/melonmanchan/table_flipper.js.git"
+  },
+  "keywords": [
+    "error",
+    "(╯°□°）╯︵ ┻━┻)",
+    "exceptions",
+    "joke"
+  ],
+  "author": "Matti Jokitulppo <melonmanchan@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/melonmanchan/table_flipper.js/issues"
+  },
+  "homepage": "https://github.com/melonmanchan/table_flipper.js#readme"
+}
