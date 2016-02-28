@@ -6,13 +6,13 @@ A useless JS module that prepends the table flipper on Exception messages, inspi
 Install using npm.
 
 ```sh
-    npm install table_flipper
+    npm install table_flipper.js
 ```
 
 and then simply
 
 ```js
-    require('table_flipper');
+    require('table_flipper.js');
 ```
 
 You can also use it in the browser straight out of the box to a certain extent!
