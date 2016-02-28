@@ -1,26 +1,37 @@
 'use strict';
 
-function setupFlip() {
-    var oldProto = Error.prototype;
+var bind   = Function.bind;
+var unbind = bind.bind(bind);
 
-    /*http://stackoverflow.com/questions/1382107/whats-a-good-way-to-extend-error-in-javascript/3535758#3535758*/
-    Error = function (message, fileName, lineNumber) {
-        if (this.stack) {
-            if (typeof(Components) != 'undefined') {
-                this.stack = this.stack.substring(this.stack.indexOf('\n') + 1);
+function setupFlip() {
+    Error = function (Error) {
+        FlipErr.prototype = Error.prototype
+
+        function FlipErr() {
+
+            var tempArgs = arguments;
+
+            if (tempArgs.length > 0) {
+                tempArgs[0] = '(╯°□°）╯︵ ┻━┻): ' + tempArgs[0];
+            } else {
+                tempArgs = ['(╯°□°）╯︵ ┻━┻): '];
             }
-            else if (typeof chrome != 'undefined' || typeof process != 'undefined') {
-                this.stack = this.stack.replace(/\n[^\n]*/,'');
+
+            var err = new (unbind(Error, null).apply(null, tempArgs));
+
+            // Remove the reference to this function from the stack
+            if (err.stack) {
+                var stackArr = err.stack.split('\n');
+                stackArr.splice(1,1)
+                err.stack = stackArr.join('\n');
             }
+
+            return err;
         }
 
-        this.message    = message    === undefined  ? '(╯°□°）╯︵ ┻━┻): ' + this.message   : '(╯°□°）╯︵ ┻━┻): ' + message;
-        this.fileName   = fileName   === undefined ? this.fileName   : fileName;
-        this.lineNumber = lineNumber === undefined ? this.lineNumber : lineNumber;
+        return FlipErr
 
-    }
-
-    Error.prototype = oldProto;
+    }(Error);
 }
 
 module.exports = (function () {
