@@ -22,3 +22,5 @@ You can also use it in the browser straight out of the box to a certain extent!
 ```
 
 Then proceed to break something!
+
+![Preview image](http://i.imgur.com/1t2Vunn.png)
