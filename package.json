@@ -2,7 +2,7 @@
   "name": "table_flipper.js",
   "version": "1.0.0",
   "description": "A useless Node.js library for table flipping on exceptions",
-  "main": "tableflip.js",
+  "main": "table_flip.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
