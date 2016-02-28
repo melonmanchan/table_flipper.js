@@ -34,7 +34,11 @@ function setupFlip() {
     }(Error);
 }
 
-module.exports = (function () {
+if (typeof module != 'undefined') {
+    module.exports = (function () {
+        setupFlip();
+    })();
+} else {
     setupFlip();
-})();
+}
 
