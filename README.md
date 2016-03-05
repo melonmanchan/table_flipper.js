@@ -15,7 +15,8 @@ and then simply
     require('table_flipper.js');
 ```
 
-You can also use it in the browser straight out of the box to a certain extent!
+You can also use it [in the browser](http://melonmanchan.github.io/table_flipper.js/) straight out of the box to a certain extent!
+
 
 ```html
     <script src="/path/to/table_flipper.js"></script>
