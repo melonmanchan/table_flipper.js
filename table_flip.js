@@ -1,9 +1,9 @@
-'use strict';
-
-var bind   = Function.bind;
-var unbind = bind.bind(bind);
-
 function setupFlip() {
+    'use strict';
+
+    var bind   = Function.bind;
+    var unbind = bind.bind(bind);
+
     Error = function (Error) {
         FlipErr.prototype = Error.prototype
 
@@ -32,7 +32,7 @@ function setupFlip() {
         return FlipErr
 
     }(Error);
-}
+};
 
 if (typeof module != 'undefined') {
     module.exports = (function () {
