@@ -1,44 +1,48 @@
-function setupFlip() {
+(function(module) {
     'use strict';
 
-    var bind   = Function.bind;
-    var unbind = bind.bind(bind);
+    function setupFlip() {
 
-    Error = function (Error) {
-        FlipErr.prototype = Error.prototype
+        var bind   = Function.bind;
+        var unbind = bind.bind(bind);
 
-        function FlipErr() {
+        Error = function (Error) {
+            FlipErr.prototype = Error.prototype;
 
-            var tempArgs = arguments;
+            function FlipErr() {
 
-            if (tempArgs.length > 0) {
-                tempArgs[0] = '(╯°□°）╯︵ ┻━┻): ' + tempArgs[0];
-            } else {
-                tempArgs = ['(╯°□°）╯︵ ┻━┻): '];
+                var tempArgs = arguments;
+
+                if (tempArgs.length > 0) {
+                    tempArgs[0] = '(╯°□°）╯︵ ┻━┻): ' + tempArgs[0];
+                } else {
+                    tempArgs = ['(╯°□°）╯︵ ┻━┻): '];
+                }
+
+                var err = new (unbind(Error, null).apply(null, tempArgs));
+
+                // Remove the reference to this function from the stack
+                if (err.stack) {
+                    var stackArr = err.stack.split('\n');
+                    stackArr.splice(1,1);
+                    err.stack = stackArr.join('\n');
+                }
+
+                return err;
             }
 
-            var err = new (unbind(Error, null).apply(null, tempArgs));
+            return FlipErr;
 
-            // Remove the reference to this function from the stack
-            if (err.stack) {
-                var stackArr = err.stack.split('\n');
-                stackArr.splice(1,1)
-                err.stack = stackArr.join('\n');
-            }
+        }(Error);
+    };
 
-            return err;
-        }
-
-        return FlipErr
-
-    }(Error);
-};
-
-if (typeof module != 'undefined') {
-    module.exports = (function () {
+    if (typeof module !== 'undefined') {
+        module.exports = (function () {
+            setupFlip();
+        })();
+    } else {
         setupFlip();
-    })();
-} else {
-    setupFlip();
-}
+    }
+
+})( typeof module !== 'undefined' ? module : undefined );
 
