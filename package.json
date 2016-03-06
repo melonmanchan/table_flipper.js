@@ -1,6 +1,6 @@
 {
   "name": "table_flipper.js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A useless Node.js library for table flipping on exceptions",
   "main": "table_flip.js",
   "scripts": {
